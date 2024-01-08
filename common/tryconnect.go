@@ -38,7 +38,7 @@ func TryConnect(h string, networkSecret *secure.NetworkSecret, ln *LocalNode) (*
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10 * time.Second)
 	defer cancel()
-	conn, errDial := s.DialContext(ctx, rn.publicAddress)
+	conn, errDial := s.DialContext(ctx, "", rn.publicAddress)
 	if errDial != nil {
 		rn.logger.Error("unable to dial, %s", errDial)
 		return nil, errDial
